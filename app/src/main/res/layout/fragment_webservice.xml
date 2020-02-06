@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/Text_dataoutput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorGrey"
+        android:hint="WebService Content"/>
+    <EditText
+        android:id="@+id/et_wsaddr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Webservice Address"
+        android:layout_below="@id/Text_dataoutput"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        />
+    <EditText
+        android:id="@+id/et_wscontent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Webservice Content"
+        android:layout_below="@id/et_wsaddr"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        />
+    <Button
+        android:id="@+id/btn_ws"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="GO!"
+        android:layout_below="@id/et_wscontent"
+        android:gravity="center"/>
+
+</RelativeLayout>
+</ScrollView>
