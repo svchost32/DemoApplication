@@ -1,47 +1,35 @@
 package com.example.demoapplication;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.navigation.ui.AppBarConfiguration;
 
 import com.example.demoapplication.Interface.LoginCallback;
-//import com.example.demoapplication.ui.WebService.TestActivity;
 import com.example.demoapplication.ui.WebService.WebServiceFragment;
 import com.example.demoapplication.ui.login.LoginFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-import android.os.StrictMode;
-import android.util.AttributeSet;
-import android.view.Gravity;
-import android.view.View;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.view.Menu;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
 import static com.example.demoapplication.ui.Other.AllType.KEY_ISLOGIN;
-import static com.example.demoapplication.ui.Other.AllType.KEY_PASSWORD;
 import static com.example.demoapplication.ui.Other.AllType.KEY_SP_NAME;
 import static com.example.demoapplication.ui.Other.AllType.KEY_USERNAME;
+
+//import com.example.demoapplication.ui.WebService.TestActivity;
+
+//import com.example.demoapplication.ui.WebService.TestActivity;
 
 public class MainActivity extends AppCompatActivity implements LoginCallback {
 
