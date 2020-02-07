@@ -1,5 +1,6 @@
 package com.example.demoapplication.ui.WebService;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,12 +8,23 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.demoapplication.R;
+
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.PropertyInfo;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapPrimitive;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
 
 
 public class WebServiceFragment extends Fragment {
@@ -43,6 +55,21 @@ public class WebServiceFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+//                textResult.setText("Hello world");
+//
+//                httprequesttask task = new httprequesttask();
+//                task.Textviewset(textResult);
+//                task.execute();
+                Client2 c2 = new Client2();
+                c2.Textviewset(textResult);
+                c2.execute();
+                try {
+                    Toast.makeText(getActivity(),c2.getdata(),Toast.LENGTH_SHORT).show();
+                } catch (MalformedURLException e) {
+                    Toast.makeText(getActivity(),"执行错误",Toast.LENGTH_SHORT).show();
+                }
+
+
                 //Toast.makeText(getActivity(),"被执行了",Toast.LENGTH_SHORT).show();
 
 //                String phoneSec = et_wsadr.getText().toString().trim();
@@ -55,9 +82,44 @@ public class WebServiceFragment extends Fragment {
 //                    et_wscont.setText("");
 //                    return;
 //                }
-
             }
         });
     }
+
+//    class CallWebService extends AsyncTask<String, Void, String> {
+//        @Override
+//        protected void onPostExecute(String s) {
+//            et_wscont.setText("Square = " + s);
+//        }
+//
+//        @Override
+//        protected String doInBackground(String... params) {
+//            String result = "";
+//
+//            SoapObject soapObject = new SoapObject("", "");
+//
+//            PropertyInfo propertyInfo = new PropertyInfo();
+//            propertyInfo.setName(PARAMETER_NAME);
+//            propertyInfo.setValue(params[0]);
+//            propertyInfo.setType(String.class);
+//
+//            soapObject.addProperty(propertyInfo);
+//
+//            SoapSerializationEnvelope envelope =  new SoapSerializationEnvelope(SoapEnvelope.VER11);
+//            envelope.setOutputSoapObject(soapObject);
+//
+//            HttpTransportSE httpTransportSE = new HttpTransportSE(URL);
+//
+//            try {
+//                httpTransportSE.call(SOAP_ACTION, envelope);
+//                SoapPrimitive soapPrimitive = (SoapPrimitive)envelope.getResponse();
+//                result = soapPrimitive.toString();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//
+//            return result;
+//        }
+//    }
 }
 

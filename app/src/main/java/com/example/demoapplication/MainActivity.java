@@ -2,16 +2,19 @@ package com.example.demoapplication;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
 
 import com.example.demoapplication.Interface.LoginCallback;
+//import com.example.demoapplication.ui.WebService.TestActivity;
 import com.example.demoapplication.ui.WebService.WebServiceFragment;
 import com.example.demoapplication.ui.login.LoginFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.os.StrictMode;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -53,6 +56,13 @@ public class MainActivity extends AppCompatActivity implements LoginCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+//        if (android.os.Build.VERSION.SDK_INT > 9) {
+//            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//            StrictMode.setThreadPolicy(policy);
+//        }
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -60,7 +70,11 @@ public class MainActivity extends AppCompatActivity implements LoginCallback {
 
         mTips = findViewById(R.id.tips);
         mUserID = findViewById(R.id.home_userid);
-        mHome = findViewById(R.id.tv_mHome);
+        mHome = findViewById(R.id.tv_home);
+        mSend = findViewById(R.id.tv_send);
+        mHomeUser = findViewById(R.id.tv_mHome);
+        mUserName = findViewById(R.id.home_username);
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +89,13 @@ public class MainActivity extends AppCompatActivity implements LoginCallback {
         mloginf = new LoginFragment(this);//新建一个登录fragment  md  第一次见这种登录方式
         final Fragment mWS = new WebServiceFragment();
 
-
+        mSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, TestActivity.class);
+//                startActivity(intent);
+            }
+        });
 
 
 
@@ -106,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements LoginCallback {
             public void onClick(View v) {
                 if (getSP().getBoolean(KEY_ISLOGIN, false)) {
 
-                    mManage.beginTransaction().add(R.id.mContent,mWS).commit();
+                    mManage.beginTransaction().replace(R.id.mContent,mWS).commit();
                 }
             }
         });
@@ -131,8 +151,11 @@ public class MainActivity extends AppCompatActivity implements LoginCallback {
     }
 
     private TextView mUserID;
-    private TextView mHome;
+    private LinearLayout mHome;
+    private TextView mUserName;
+    private TextView mHomeUser;
     private TextView mTips;
+    private  LinearLayout mSend;
 
 
     /**
@@ -166,9 +189,10 @@ public class MainActivity extends AppCompatActivity implements LoginCallback {
             //数据读取完毕 开始设置UI
             //解决登陆成功后登录窗口依旧留存在界面的问题
             mManage.beginTransaction().remove(mloginf).commit();
-            mUserID.setText("Hello " + username + "!");
-            mHome.setText("Home ^ " + username);
-            mTips.setText("当前登录用户:" + username);
+            mUserName.setText("Hello " + username + "!");
+            mUserID.setText("UID:00001");
+            mHomeUser.setText("Home ^ " + username);
+            mTips.setText("Current Login User :" + username);
         }
     }
 }

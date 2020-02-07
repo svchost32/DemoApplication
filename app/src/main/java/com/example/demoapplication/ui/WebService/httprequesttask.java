@@ -1,20 +1,32 @@
 package com.example.demoapplication.ui.WebService;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+import android.os.AsyncTask;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Scanner;
 
-public class test  {
+public class httprequesttask  {
 
-    private String str;
+    private StringBuffer sb = new StringBuffer();
+    private String str1;
+    private TextView tv1;
 
-    public String getdata() throws IOException {
+     public void Textviewset(TextView textView){
+         this.tv1 = textView;
+     }
+
+
+
+
+    public String dataget() throws IOException {
+
         URL url = new URL("http://70.106.253.97:8989/webservice");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
@@ -27,7 +39,7 @@ public class test  {
         connection.getOutputStream().write(info.getBytes());
 
         String str = "";
-        StringBuffer sb = new StringBuffer();
+
 
         //獲取response
         int rescode = connection.getResponseCode();
@@ -47,11 +59,11 @@ public class test  {
 
         }else
         {
-            return "";
+            return "Error";
         }
 
-
         return sb.toString();
+
 
     }
 
@@ -66,4 +78,9 @@ public class test  {
         sbuilder.append("</S:Body></S:Envelope>");
         return sbuilder.toString();
     }
+
+//    protected void onPostExecute() {
+//
+//       tv1.setText(str1);
+//    }
 }

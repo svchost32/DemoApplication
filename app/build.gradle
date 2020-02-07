@@ -37,9 +37,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation fileTree(include: ['*.aar', '*.jar'], exclude: [], dir: 'lib')
-    compile 'javax.jws:javax.jws-api:1.1'
-    compile 'javax.xml.bind:jaxb-api:2.2.4'
-    compile 'com.google.code.ksoap2-android:ksoap2-android:3.6.1'
+    implementation 'javax.jws:javax.jws-api:1.1'
+    implementation 'javax.xml.bind:jaxb-api:2.2.4'
+    implementation 'com.google.code.ksoap2-android:ksoap2-android:3.6.1'
     //    implementation files('D:/android/DemoApplication/lib/jaxws-api-2.3.1.jar')
     //implementation files('D:/android/DemoApplication/lib/ksoap2-android-assembly-3.5.0-jar-with-dependencies.jar')
 }

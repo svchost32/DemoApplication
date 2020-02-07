@@ -7,6 +7,7 @@ import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import javax.xml.ws.WebEndpoint;
 import javax.xml.ws.WebServiceClient;
+import java.util.Collection;
 
 
 /**
@@ -15,7 +16,7 @@ import javax.xml.ws.WebServiceClient;
  * Generated source version: 2.0
  * 
  */
-@WebServiceClient(name = "datainputService", targetNamespace = "http://webservice.jd.com/", wsdlLocation = "http://192.168.1.243:8989/webservice?wsdl")
+@WebServiceClient(name = "datainputService", targetNamespace = "http://webservice.jd.com/", wsdlLocation = "http://70.106.253.97:8989/webservice?wsdl")
 public class DatainputService
     extends Service
 {
@@ -25,7 +26,7 @@ public class DatainputService
     static {
         URL url = null;
         try {
-            url = new URL("http://192.168.1.243:8989/webservice?wsdl");
+            url = new URL("http://70.106.253.97:8989/webservice?wsdl");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
