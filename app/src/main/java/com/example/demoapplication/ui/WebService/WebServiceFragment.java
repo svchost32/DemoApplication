@@ -55,19 +55,28 @@ public class WebServiceFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-//                textResult.setText("Hello world");
-//
+
+
 //                httprequesttask task = new httprequesttask();
 //                task.Textviewset(textResult);
 //                task.execute();
+//                Toast.makeText(getActivity(),task.getStr(),Toast.LENGTH_SHORT).show();
+//                textResult.setText(task.getStr());
                 Client2 c2 = new Client2();
-                c2.Textviewset(textResult);
-                c2.execute();
                 try {
+
                     Toast.makeText(getActivity(),c2.getdata(),Toast.LENGTH_SHORT).show();
                 } catch (MalformedURLException e) {
-                    Toast.makeText(getActivity(),"执行错误",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"获取失败",Toast.LENGTH_SHORT).show();
                 }
+//                c2.Textviewset(textResult);
+//                c2.execute();
+//                Toast.makeText(getActivity(),c2.getStr1(),Toast.LENGTH_SHORT).show();
+//                try {
+//                    Toast.makeText(getActivity(),c2.getdata(),Toast.LENGTH_SHORT).show();
+//                } catch (MalformedURLException e) {
+//                    Toast.makeText(getActivity(),"执行错误",Toast.LENGTH_SHORT).show();
+//                }
 
 
                 //Toast.makeText(getActivity(),"被执行了",Toast.LENGTH_SHORT).show();

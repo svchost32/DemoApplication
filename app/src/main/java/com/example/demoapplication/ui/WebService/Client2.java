@@ -34,6 +34,10 @@ public class Client2 extends AsyncTask<String, Void, String> {
 
     }
 
+    public String getStr1(){
+        return str1;
+    }
+
     @Override
     protected String doInBackground(String... strings) {
 
