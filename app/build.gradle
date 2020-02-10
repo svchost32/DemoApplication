@@ -37,9 +37,17 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation fileTree(include: ['*.aar', '*.jar'], exclude: [], dir: 'lib')
-    implementation 'javax.jws:javax.jws-api:1.1'
-    implementation 'javax.xml.bind:jaxb-api:2.2.4'
+//    implementation 'javax.jws:javax.jws-api:1.1'
     implementation 'com.google.code.ksoap2-android:ksoap2-android:3.6.1'
-    //    implementation files('D:/android/DemoApplication/lib/jaxws-api-2.3.1.jar')
-    //implementation files('D:/android/DemoApplication/lib/ksoap2-android-assembly-3.5.0-jar-with-dependencies.jar')
+//    compile 'javax.xml.ws:jaxws-api:2.2.6'
+//    compile 'javax.annotation:javax.annotation-api:1.2-b01'
+    //    compile group: 'org.apache.cxf', name: 'cxf-rt-frontend-jaxws', version: '3.0.1'
+    //    compile group: 'org.apache.cxf', name: 'cxf-rt-ws-policy', version: '2.7.1'
+    //    implementation files('D:/android/DemoApplication/lib/jinouts-ws.jar')
+    //    implementation files('D:/android/DemoApplication/lib/jinouts-ws-support.jar')
+    //    implementation files('D:/android/DemoApplication/lib/soap-xmlbeans-1.2.jar')
+    //    implementation files('D:/android/DemoApplication/lib/soapUI.jar')
+    //    implementation files('D:/android/DemoApplication/lib/wsdl4j-1.6.2-fixed.jar')
+//    implementation files('D:/android/DemoApplication/lib/cxf-2.6.1.jar')
+
 }

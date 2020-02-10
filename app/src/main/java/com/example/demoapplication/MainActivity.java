@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +20,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.navigation.ui.AppBarConfiguration;
 
 import com.example.demoapplication.Interface.LoginCallback;
+import com.example.demoapplication.ui.RealTime.RealtimeFragment;
 import com.example.demoapplication.ui.WebService.WebServiceFragment;
 import com.example.demoapplication.ui.login.LoginFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -32,6 +35,8 @@ import static com.example.demoapplication.ui.Other.AllType.KEY_USERNAME;
 //import com.example.demoapplication.ui.WebService.TestActivity;
 
 public class MainActivity extends AppCompatActivity implements LoginCallback {
+    private PopupMenu p1;
+    private Button btn_p1;
 
     private AppBarConfiguration mAppBarConfiguration;
     private FragmentManager mManage;
@@ -59,31 +64,27 @@ public class MainActivity extends AppCompatActivity implements LoginCallback {
         mTips = findViewById(R.id.tips);
         mUserID = findViewById(R.id.home_userid);
         mHome = findViewById(R.id.tv_home);
-        mSend = findViewById(R.id.tv_send);
+        mRealtime = findViewById(R.id.tv_Realtime);
         mHomeUser = findViewById(R.id.tv_mHome);
         mUserName = findViewById(R.id.home_username);
+        final DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                drawer.openDrawer(Gravity.LEFT);
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
-        final DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
 
         mloginf = new LoginFragment(this);//新建一个登录fragment  md  第一次见这种登录方式
         final Fragment mWS = new WebServiceFragment();
+        final Fragment mRT = new RealtimeFragment();
 
-        mSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, TestActivity.class);
-//                startActivity(intent);
-            }
-        });
+
 
 
 
@@ -115,9 +116,25 @@ public class MainActivity extends AppCompatActivity implements LoginCallback {
                 if (getSP().getBoolean(KEY_ISLOGIN, false)) {
 
                     mManage.beginTransaction().replace(R.id.mContent,mWS).commit();
+                    drawer.closeDrawer(Gravity.LEFT);//关闭侧滑栏 手动切换必须主动关闭侧滑栏
                 }
             }
         });
+
+        //Realtime
+        LinearLayout tv_rt = findViewById(R.id.tv_Realtime);
+        tv_rt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getSP().getBoolean(KEY_ISLOGIN, false)) {
+                    mManage.beginTransaction().replace(R.id.mContent,mRT).commit();
+                    drawer.closeDrawer(Gravity.LEFT);//关闭侧滑栏 手动切换必须主动关闭侧滑栏
+                }
+
+            }
+        });
+
+
 
         //进入界面时,开始从本地读取数据
         initializationUI();
@@ -143,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements LoginCallback {
     private TextView mUserName;
     private TextView mHomeUser;
     private TextView mTips;
-    private  LinearLayout mSend;
+    private LinearLayout mRealtime;
 
 
     /**
@@ -183,4 +200,6 @@ public class MainActivity extends AppCompatActivity implements LoginCallback {
             mTips.setText("Current Login User :" + username);
         }
     }
+
+
 }

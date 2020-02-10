@@ -1,30 +1,22 @@
 package com.example.demoapplication.ui.WebService;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.example.demoapplication.R;
-
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.PropertyInfo;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapPrimitive;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
-
-import java.io.IOException;
-import java.net.MalformedURLException;
+import com.example.demoapplication.ui.WebService.Model.WebModel;
 
 
 public class WebServiceFragment extends Fragment {
@@ -44,31 +36,64 @@ public class WebServiceFragment extends Fragment {
         return root;
     }
 
+    private WebModel model;
+
+    private static final String TAG = "WebServiceFragment";
     @Override
     public void onViewCreated (@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        model= ViewModelProviders.of(this).get(WebModel.class);
+
         mBtnws = getActivity().findViewById(R.id.btn_ws);
         et_wsadr = getActivity().findViewById(R.id.et_wsaddr);
         textResult = getActivity().findViewById(R.id.Text_dataoutput);
         et_wscont = getActivity().findViewById(R.id.et_wscontent);
+
+        model.simpledata.observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Log.d(TAG, "onChanged: "+s);
+            }
+        });
+
         mBtnws.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                try {
+//                    model.requestWeb();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+
+//                httprequesttask task = new httprequesttask();
+//                task.execute();
+//                System.out.println(task.getStr());
+//                textResult.setText("hello");
+//                new CXFtest().execute("String");
 
 
+
+
+//                CXFtest c1 = new CXFtest();
+//                Toast.makeText(getActivity(),c1.getdata("000"),Toast.LENGTH_SHORT).show();
+//                textResult.setText(c1.getdata("000"));
+//                DataServiceClient ds1 = new DataServiceClient();
+//                ds1.getData("hello");
+//                Toast.makeText(getActivity(),"Hello",Toast.LENGTH_SHORT).show();
 
 //                httprequesttask task = new httprequesttask();
 //                task.Textviewset(textResult);
 //                task.execute();
 //                Toast.makeText(getActivity(),task.getStr(),Toast.LENGTH_SHORT).show();
 //                textResult.setText(task.getStr());
-                Client2 c2 = new Client2();
-                try {
-
-                    Toast.makeText(getActivity(),c2.getdata(),Toast.LENGTH_SHORT).show();
-                } catch (MalformedURLException e) {
-                    Toast.makeText(getActivity(),"获取失败",Toast.LENGTH_SHORT).show();
-                }
+//                Client2 c2 = new Client2();
+//                try {
+//
+//                    Toast.makeText(getActivity(),c2.getdata(),Toast.LENGTH_SHORT).show();
+//                } catch (MalformedURLException e) {
+//                    Toast.makeText(getActivity(),"获取失败",Toast.LENGTH_SHORT).show();
+//                }
 //                c2.Textviewset(textResult);
 //                c2.execute();
 //                Toast.makeText(getActivity(),c2.getStr1(),Toast.LENGTH_SHORT).show();
