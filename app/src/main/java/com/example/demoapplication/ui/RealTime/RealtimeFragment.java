@@ -86,7 +86,7 @@ public class RealtimeFragment extends Fragment {
             Log.d("WebView", "onPageStarted: ");
         }
 
-
+//hello
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
